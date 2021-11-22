@@ -1,17 +1,17 @@
 import {Container} from 'typescript-ioc';
 
-import {HelloWorldService} from '../../src/services';
+import {ToRomanService} from '../../src/services';
 import {ApiServer} from '../../src/server';
 import {buildApiServer} from '../helper';
 
 describe('Hello World service', () =>{
 
   let app: ApiServer;
-  let service: HelloWorldService;
+  let service: ToRomanService;
   beforeAll(() => {
     app = buildApiServer();
 
-    service = Container.get(HelloWorldService);
+    service = Container.get(ToRomanService);
   });
 
   test('canary test verifies test infrastructure', () => {
@@ -19,16 +19,16 @@ describe('Hello World service', () =>{
   });
 
   describe('Given greeting()', () => {
-    context('when "Juan" provided', () => {
-      const name = 'Juan';
-      test('then return "Hello, Juan!"', async () => {
-        expect(await service.greeting(name)).toEqual(`Hello, ${name}!`);
-      });
-    });
+    // context('when "Juan" provided', () => {
+    //   const name = 'Juan';
+    //   test('then return "Hello, Juan!"', async () => {
+    //     expect(await service.romanizer(name)).toEqual(`Hello, ${name}!`);
+    //   });
+    // });
 
     context('when no name provided', () => {
       test('then return "Hello, World!"', async () => {
-        expect(await service.greeting()).toEqual('Hello, World!');
+        expect(await service.romanizer()).toEqual("I'm, Romanizer!");
       });
     })
   });

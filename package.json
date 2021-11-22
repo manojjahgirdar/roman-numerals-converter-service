@@ -1,8 +1,8 @@
 {
-  "name": "template-node-typescript",
-  "version": "1.0.0",
+  "name": "roman-numerals-converter-service",
+  "version": "1.1.0",
   "org": "my-org",
-  "description": "Code pattern for starting a typescript-based microservice",
+  "description": "Code pattern for converting roman numbers to integer numbers",
   "main": "index.js",
   "config": {
     "protocol": "http",
