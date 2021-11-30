@@ -30,14 +30,14 @@ describe('hello-world.controller', () => {
   });
 
   describe('Given /to-roman', () => {
-    const expectedResponse = "I'm Romanizer";
+    const expectedResponse = "I";
 
     beforeEach(() => {
       mockGreeting.mockReturnValueOnce(Promise.resolve(expectedResponse));
     });
 
-    test('should return "Hello, World!"', done => {
-      request(app).get('/to-roman').expect(200).expect(expectedResponse, done);
+    test(`for 1 it should return "I"`, done => {
+      request(app).get(`/to-roman?value=${1}`).expect(200).expect(expectedResponse, done);
     });
   });
 
