@@ -34,45 +34,56 @@ describe('To-Roman service', () =>{
       test('for 3 it should return "III"', async () => {
         expect(await service.romanizer(3)).toEqual("III");
       });
-
       test('for 11 it should return "XI"', async () => {
         expect(await service.romanizer(11)).toEqual("XI");
       });
-      test('for 12 it should return "XII"', async () => {
-        expect(await service.romanizer(12)).toEqual("XII");
-      });
-      test('for 13 it should return "XIII"', async () => {
-        expect(await service.romanizer(13)).toEqual("XIII");
-      });
-
       test('for 21 it should return "XXI"', async () => {
         expect(await service.romanizer(21)).toEqual("XXI");
       });
-      test('for 22 it should return "XXII"', async () => {
-        expect(await service.romanizer(22)).toEqual("XXII");
-      });
-      test('for 23 it should return "XXIII"', async () => {
-        expect(await service.romanizer(23)).toEqual("XXIII");
-      });
-
       test('for 31 it should return "XXXI"', async () => {
         expect(await service.romanizer(31)).toEqual("XXXI");
       });
-      test('for 32 it should return "XXXII"', async () => {
-        expect(await service.romanizer(32)).toEqual("XXXII");
-      });
-      test('for 33 it should return "XXXIII"', async () => {
-        expect(await service.romanizer(33)).toEqual("XXXIII");
-      });
-
       test('for 41 it should return "XLI"', async () => {
         expect(await service.romanizer(41)).toEqual("XLI");
       });
-      test('for 42 it should return "XLII"', async () => {
-        expect(await service.romanizer(42)).toEqual("XLII");
+      test('for 51 it should return "LI"', async () => {
+        expect(await service.romanizer(51)).toEqual("LI");
       });
-      test('for 43 it should return "XLIII"', async () => {
-        expect(await service.romanizer(43)).toEqual("XLIII");
+      test('for 61 it should return "LVI"', async () => {
+        expect(await service.romanizer(61)).toEqual("LXI");
+      });
+      test('for 71 it should return "LVII"', async () => {
+        expect(await service.romanizer(71)).toEqual("LXXI");
+      });
+      test('for 81 it should return "LVIII"', async () => {
+        expect(await service.romanizer(81)).toEqual("LXXXI");
+      });
+      test('for 91 it should return "XCI"', async () => {
+        expect(await service.romanizer(91)).toEqual("XCI");
+      });
+      test('for 101 it should return "CI"', async () => {
+        expect(await service.romanizer(101)).toEqual("CI");
+      });
+      test('for 401 it should return "CDI"', async () => {
+        expect(await service.romanizer(401)).toEqual("CDI");
+      });
+      test('for 501 it should return "DI"', async () => {
+        expect(await service.romanizer(501)).toEqual("DI");
+      });
+      test('for 901 it should return "CMI"', async () => {
+        expect(await service.romanizer(901)).toEqual("CMI");
+      });
+      test('for 1001 it should return "MI"', async () => {
+        expect(await service.romanizer(1001)).toEqual("MI");
+      });
+      test('for 1401 it should return "MCDI"', async () => {
+        expect(await service.romanizer(1401)).toEqual("MCDI");
+      });
+      test('for 1501 it should return "MDI"', async () => {
+        expect(await service.romanizer(1501)).toEqual("MDI");
+      });
+      test('for 1901 it should return "MXDI"', async () => {
+        expect(await service.romanizer(1901)).toEqual("MCMI");
       });
     });
 
@@ -92,6 +103,36 @@ describe('To-Roman service', () =>{
       test('for 44 it should return "XLIV"', async () => {
         expect(await service.romanizer(44)).toEqual("XLIV");
       });
+      test('for 54 it should return "LIV"', async () => {
+        expect(await service.romanizer(54)).toEqual("LIV");
+      });
+      test('for 94 it should return "XCIV"', async () => {
+        expect(await service.romanizer(94)).toEqual("XCIV");
+      });
+      test('for 104 it should return "CIV"', async () => {
+        expect(await service.romanizer(104)).toEqual("CIV");
+      });
+      test('for 404 it should return "CDIV"', async () => {
+        expect(await service.romanizer(404)).toEqual("CDIV");
+      });
+      test('for 504 it should return "DIV"', async () => {
+        expect(await service.romanizer(504)).toEqual("DIV");
+      });
+      test('for 904 it should return "CMIV"', async () => {
+        expect(await service.romanizer(904)).toEqual("CMIV");
+      });
+      test('for 1004 it should return "MIV"', async () => {
+        expect(await service.romanizer(1004)).toEqual("MIV");
+      });
+      test('for 1404 it should return "MCDIV"', async () => {
+        expect(await service.romanizer(1404)).toEqual("MCDIV");
+      });
+      test('for 1504 it should return "MDIV"', async () => {
+        expect(await service.romanizer(1504)).toEqual("MDIV");
+      });
+      test('for 1904 it should return "MCMIV"', async () => {
+        expect(await service.romanizer(1904)).toEqual("MCMIV");
+      });
     });
 
     context('Test for the Pattern V, L, D', () => {
@@ -107,6 +148,39 @@ describe('To-Roman service', () =>{
       test('for 35 it should return "XXXV"', async () => {
         expect(await service.romanizer(35)).toEqual("XXXV");
       });
+      test('for 50 it should return "L"', async () => {
+        expect(await service.romanizer(50)).toEqual("L");
+      });
+      test('for 55 it should return "LV"', async () => {
+        expect(await service.romanizer(55)).toEqual("LV");
+      });
+      test('for 95 it should return "XCV"', async () => {
+        expect(await service.romanizer(95)).toEqual("XCV");
+      });
+      test('for 195 it should return "CXCV"', async () => {
+        expect(await service.romanizer(195)).toEqual("CXCV");
+      });
+      test('for 405 it should return "CDV"', async () => {
+        expect(await service.romanizer(405)).toEqual("CDV");
+      });
+      test('for 505 it should return "DV"', async () => {
+        expect(await service.romanizer(505)).toEqual("DV");
+      });
+      test('for 905 it should return "CMV"', async () => {
+        expect(await service.romanizer(905)).toEqual("CMV");
+      });
+      test('for 1005 it should return "MV"', async () => {
+        expect(await service.romanizer(1005)).toEqual("MV");
+      });
+      test('for 1405 it should return "MCDV"', async () => {
+        expect(await service.romanizer(1405)).toEqual("MCDV");
+      });
+      test('for 1505 it should return "MDV"', async () => {
+        expect(await service.romanizer(1505)).toEqual("MDV");
+      });
+      test('for 1905 it should return "MCMV"', async () => {
+        expect(await service.romanizer(1905)).toEqual("MCMV");
+      });
     });
 
     context('Test for the Pattern VI, VII, VIII', () => { 
@@ -119,45 +193,47 @@ describe('To-Roman service', () =>{
       test('for 8 it should return "VIII"', async () => {
         expect(await service.romanizer(8)).toEqual("VIII");
       });
-
       test('for 16 it should return "XVI"', async () => {
         expect(await service.romanizer(16)).toEqual("XVI");
       });
-      test('for 17 it should return "XVII"', async () => {
-        expect(await service.romanizer(17)).toEqual("XVII");
-      });
-      test('for 18 it should return "XVIII"', async () => {
-        expect(await service.romanizer(18)).toEqual("XVIII");
-      });
-      
       test('for 26 it should return "XXVI"', async () => {
         expect(await service.romanizer(26)).toEqual("XXVI");
       });
-      test('for 27 it should return "XXVII"', async () => {
-        expect(await service.romanizer(27)).toEqual("XXVII");
-      });
-      test('for 28 it should return "XXVIII"', async () => {
-        expect(await service.romanizer(28)).toEqual("XXVIII");
-      });
-
       test('for 36 it should return "XXXVI"', async () => {
         expect(await service.romanizer(36)).toEqual("XXXVI");
       });
-      test('for 37 it should return "XXXVII"', async () => {
-        expect(await service.romanizer(37)).toEqual("XXXVII");
-      });
-      test('for 38 it should return "XXXVIII"', async () => {
-        expect(await service.romanizer(38)).toEqual("XXXVIII");
-      });
-
       test('for 46 it should return "XLVI"', async () => {
         expect(await service.romanizer(46)).toEqual("XLVI");
       });
-      test('for 47 it should return "XLII"', async () => {
-        expect(await service.romanizer(47)).toEqual("XLVII");
+      test('for 58 it should return "LVIII"', async () => {
+        expect(await service.romanizer(58)).toEqual("LVIII");
       });
-      test('for 48 it should return "XLIII"', async () => {
-        expect(await service.romanizer(48)).toEqual("XLVIII");
+      test('for 98 it should return "XCVIII"', async () => {
+        expect(await service.romanizer(98)).toEqual("XCVIII");
+      });
+      test('for 108 it should return "CVIII"', async () => {
+        expect(await service.romanizer(108)).toEqual("CVIII");
+      });
+      test('for 408 it should return "CDVIII"', async () => {
+        expect(await service.romanizer(408)).toEqual("CDVIII");
+      });
+      test('for 508 it should return "DVIII"', async () => {
+        expect(await service.romanizer(508)).toEqual("DVIII");
+      });
+      test('for 908 it should return "CMVIII"', async () => {
+        expect(await service.romanizer(908)).toEqual("CMVIII");
+      });
+      test('for 1008 it should return "MVIII"', async () => {
+        expect(await service.romanizer(1008)).toEqual("MVIII");
+      });
+      test('for 1408 it should return "MCDVIII"', async () => {
+        expect(await service.romanizer(1408)).toEqual("MCDVIII");
+      });
+      test('for 1508 it should return "MDVIII"', async () => {
+        expect(await service.romanizer(1508)).toEqual("MDVIII");
+      });
+      test('for 1908 it should return "MCMVIII"', async () => {
+        expect(await service.romanizer(1908)).toEqual("MCMVIII");
       });
     });
 
@@ -177,6 +253,36 @@ describe('To-Roman service', () =>{
       test('for 49 it should return "XLIX"', async () => {
         expect(await service.romanizer(49)).toEqual("XLIX");
       });
+      test('for 59 it should return "LIX"', async () => {
+        expect(await service.romanizer(59)).toEqual("LIX");
+      });
+      test('for 99 it should return "XCIX"', async () => {
+        expect(await service.romanizer(99)).toEqual("XCIX");
+      }); 
+      test('for 109 it should return "CIX"', async () => {
+        expect(await service.romanizer(109)).toEqual("CIX");
+      });
+      test('for 409 it should return "CDIX"', async () => {
+        expect(await service.romanizer(409)).toEqual("CDIX");
+      });
+      test('for 509 it should return "DIX"', async () => {
+        expect(await service.romanizer(509)).toEqual("DIX");
+      });
+      test('for 909 it should return "CMIX"', async () => {
+        expect(await service.romanizer(909)).toEqual("CMIX");
+      });
+      test('for 1009 it should return "MIX"', async () => {
+        expect(await service.romanizer(1009)).toEqual("MIX");
+      });
+      test('for 1409 it should return "MCDIX"', async () => {
+        expect(await service.romanizer(1409)).toEqual("MCDIX");
+      });
+      test('for 1509 it should return "MDIX"', async () => {
+        expect(await service.romanizer(1509)).toEqual("MDIX");
+      });
+      test('for 1909 it should return "MCMIX"', async () => {
+        expect(await service.romanizer(1909)).toEqual("MCMIX");
+      });
     });
 
     context('Test for the Pattern X, C, M', () => {
@@ -192,8 +298,35 @@ describe('To-Roman service', () =>{
       test('for 40 it should return "XL"', async () => {
         expect(await service.romanizer(40)).toEqual("XL");
       });
-      test('for 50 it should return "L"', async () => {
-        expect(await service.romanizer(50)).toEqual("L");
+      test('for 60 it should return "LX"', async () => {
+        expect(await service.romanizer(60)).toEqual("LX");
+      });
+      test('for 70 it should return "LXX"', async () => {
+        expect(await service.romanizer(70)).toEqual("LXX");
+      });
+      test('for 80 it should return "LXXX"', async () => {
+        expect(await service.romanizer(80)).toEqual("LXXX");
+      });
+      test('for 90 it should return "XC"', async () => {
+        expect(await service.romanizer(90)).toEqual("XC");
+      });
+      test('for 100 it should return "C"', async () => {
+        expect(await service.romanizer(100)).toEqual("C");
+      });
+      test('for 400 it should return "CD"', async () => {
+        expect(await service.romanizer(400)).toEqual("CD");
+      });
+      test('for 500 it should return "D"', async () => {
+        expect(await service.romanizer(500)).toEqual("D");
+      });
+      test('for 900 it should return "CM"', async () => {
+        expect(await service.romanizer(900)).toEqual("CM");
+      });
+      test('for 1000 it should return "M"', async () => {
+        expect(await service.romanizer(1000)).toEqual("M");
+      });
+      test('for 3000 it should return "MMM"', async () => {
+        expect(await service.romanizer(3000)).toEqual("MMM");
       });
     });
   });

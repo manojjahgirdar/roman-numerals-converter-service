@@ -26,15 +26,21 @@ export class ToRomanService implements ToRomanApi {
       9: 'IX',
       10: 'X',
       40: 'XL',
-      50: 'L'
+      50: 'L',
+      90: 'XC',
+      100: 'C',
+      400: 'CD',
+      500: 'D',
+      900: 'CM',
+      1000: 'M'
     };
 
     let romanized = '';
     // select key in descending order
     for (let key of Object.keys(romanNumeralMap).reverse()) {
       while (value >= parseInt(key)) {
-        romanized += romanNumeralMap[key];
-        value -= parseInt(key);
+        romanized += romanNumeralMap[key];  
+        value -= parseInt(key); 
       }
     }
     return romanized;
