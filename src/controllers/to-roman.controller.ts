@@ -1,8 +1,9 @@
-import {GET, Path, PathParam} from 'typescript-rest';
+import {GET, Path, QueryParam} from 'typescript-rest';
 import {Inject} from 'typescript-ioc';
 import {ToRomanApi} from '../services';
 import {LoggerApi} from '../logger';
 
+// path parameter 'value'
 @Path('/to-roman')
 export class ToRomanController {
 
@@ -14,10 +15,10 @@ export class ToRomanController {
   get logger() {
     return this._baseLogger.child('ToRomanController');
   }
-
+  
   @GET
-  async RomanizerFunc(): Promise<string> {
-    this.logger.info('Saying hello from Romanizer');
-    return this.service.romanizer();
+  async RomanizerFunc(@QueryParam("value") value: number): Promise<string> {
+    this.logger.info(`to-roman invoked with number ${value}`);
+    return this.service.romanizer(value);
   }
 }

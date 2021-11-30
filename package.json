@@ -17,7 +17,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "test": "jest --coverage",
-    "tdd": "jest --watch",
+    "tdd": "jest --verbose --watch",
     "prebuild": "npm run clean",
     "build": "tsc",
     "postbuild": "npm run swagger",

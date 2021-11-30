@@ -1,3 +1,3 @@
 export abstract class ToRomanApi {
-  abstract romanizer(name?: string): Promise<string>;
+  abstract romanizer(value?: number): Promise<string>;
 }  
