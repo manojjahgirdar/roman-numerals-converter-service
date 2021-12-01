@@ -17,7 +17,7 @@ export class ToRomanController {
   
   @GET
   async RomanizerFunc(@QueryParam("value") value: number): Promise<string> {
-    this.logger.info(`to-roman invoked with number ${value}`);
+    this.logger.info(`to-roman invoked with number: ${value}`);
     return this.service.romanizer(value);
   }
 }

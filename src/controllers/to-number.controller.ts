@@ -17,7 +17,7 @@ export class ToNumberController {
   
   @GET
   async DeRomanizerFunc(@QueryParam("value") value: string): Promise<number> {
-    this.logger.info(`to-number invoked with number ${value}`);
+    this.logger.info(`to-number invoked with roman-no: ${value}`);
     return this.service.deromanizer(value);
   }
 }
