@@ -9,7 +9,7 @@ class MockToRomanService implements ToRomanApi {
   romanizer = jest.fn().mockName('romanizer');
 }
 
-describe('hello-world.controller', () => {
+describe('to-roman.controller', () => {
 
   let app: Application;
   let mockRomanizer: jest.Mock;

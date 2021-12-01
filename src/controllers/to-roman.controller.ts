@@ -3,7 +3,6 @@ import {Inject} from 'typescript-ioc';
 import {ToRomanApi} from '../services';
 import {LoggerApi} from '../logger';
 
-// path parameter 'value'
 @Path('/to-roman')
 export class ToRomanController {
 
