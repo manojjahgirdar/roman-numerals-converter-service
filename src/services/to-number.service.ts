@@ -25,13 +25,14 @@ export class ToNumberService implements ToNumberApi {
       M: 1000 // TDD: Step 10
     }
 
+    if (value === 'nulla') return 0; // TDD: Step 1
     
     for (let i=0; i<value.length; i++) {
       if (!(value[i] in romanNumeralMap)) throw new Error('Invalid roman number'); // TDD: Step 11
       if (!isNaN(Number(value[i]))) throw new Error('Invalid roman number'); // TDD: Step 12
     }
     
-    let result = 0;
+    let result: number = 0;
     let count: number = 0;
     for (let i = 0; i < value.length; i++) {
       const current = value[i];
@@ -42,7 +43,7 @@ export class ToNumberService implements ToNumberApi {
       if (current === next) count++;
       else count = 0;
 
-      if (count >= 3) throw new Error('Invalid roman number');  // TDD: Step 2
+      if (count >= 3) throw new Error('Invalid roman number');  // TDD: Step 3
 
       if (current === "I" && next === "V") {  // TDD: Step 4
         result += 4;
@@ -50,7 +51,7 @@ export class ToNumberService implements ToNumberApi {
       } else if (current === "I" && next === "X") { // TDD: Step 6
         result += 9;
         i++;
-      } else if (nextValue > currentValue) {  // TDD: Step 1
+      } else if (nextValue > currentValue) {  // TDD: Step 2
         result += nextValue - currentValue;
         i++;
       } else { 
