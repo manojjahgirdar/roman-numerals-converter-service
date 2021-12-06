@@ -15,6 +15,8 @@ export class ToNumberService implements ToNumberApi {
   async deromanizer(value: string = "I"): Promise<number> {
     this.logger.info(`Invoked deromanizer with roman-no: ${value}`);
     
+    if (value === 'nulla') return 0; // TDD: Step 1
+    
     const romanNumeralMap = {
       I: 1,
       V: 5, // TDD: Step 3
@@ -24,8 +26,6 @@ export class ToNumberService implements ToNumberApi {
       D: 500, // TDD: Step 9
       M: 1000 // TDD: Step 10
     }
-
-    if (value === 'nulla') return 0; // TDD: Step 1
     
     for (let i=0; i<value.length; i++) {
       if (!(value[i] in romanNumeralMap)) throw new Error('Invalid roman number'); // TDD: Step 11
@@ -43,7 +43,7 @@ export class ToNumberService implements ToNumberApi {
       if (current === next) count++;
       else count = 0;
 
-      if (count >= 3) throw new Error('Invalid roman number');  // TDD: Step 3
+      if (count >= 3) throw new SyntaxError('Invalid Roman Numeral')  // TDD: Step 3
 
       if (current === "I" && next === "V") {  // TDD: Step 4
         result += 4;

@@ -115,13 +115,13 @@ describe('To-Number service', () => {
 
             context('Roman Numbers like IIII, VIIIII, XXXX', () => {
                 test('for "IIII" it should throw an error', async () => {
-                    expect(async () => await service.deromanizer("IIII")).rejects.toThrowError("Invalid roman number");
+                    await expect(service.deromanizer("IIII")).rejects.toThrow('Invalid Roman Numeral')
                 });
                 test('for "VIIIII" it should throw an error', async () => {
-                    expect(async () => await service.deromanizer("VIIIII")).rejects.toThrowError("Invalid roman number");
+                    await expect(service.deromanizer("VIIIII")).rejects.toThrow('Invalid Roman Numeral')
                 });
                 test('for "XXXX" it should throw an error', async () => {
-                    expect(async () => await service.deromanizer("XXXX")).rejects.toThrowError("Invalid roman number");
+                    await expect(service.deromanizer("XXXX")).rejects.toThrow('Invalid Roman Numeral')
                 });
             });
 
