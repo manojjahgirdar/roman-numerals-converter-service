@@ -2,7 +2,7 @@
   "name": "roman-numerals-converter-service",
   "version": "1.1.0",
   "org": "my-org",
-  "description": "Code pattern for converting roman numbers to integer numbers",
+  "description": "Roman Number Converter",
   "main": "index.js",
   "config": {
     "protocol": "http",
