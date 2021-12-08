@@ -15,21 +15,21 @@ export class ToNumberService implements ToNumberApi {
   async deromanizer(value: string = "I"): Promise<number> {
     this.logger.info(`Invoked deromanizer with roman-no: ${value}`);
     
-    if (value === 'nulla') return 0; // TDD: Step 1
+    if (value === 'nulla') return 0;
     
     const romanNumeralMap = {
       I: 1,
-      V: 5, // TDD: Step 3
-      X: 10, // TDD: Step 5
-      L: 50, // TDD: Step 7
-      C: 100, // TDD: Step 8
-      D: 500, // TDD: Step 9
-      M: 1000 // TDD: Step 10
+      V: 5,
+      X: 10,
+      L: 50,
+      C: 100,
+      D: 500,
+      M: 1000
     }
     
     for (let i=0; i<value.length; i++) {
-      if (!(value[i] in romanNumeralMap)) throw new Error('Invalid roman number'); // TDD: Step 11
-      if (!isNaN(Number(value[i]))) throw new Error('Invalid roman number'); // TDD: Step 12
+      if (!(value[i] in romanNumeralMap)) throw new Error('Invalid roman number');
+      if (!isNaN(Number(value[i]))) throw new Error('Invalid roman number');
     }
     
     let result: number = 0;
@@ -43,15 +43,15 @@ export class ToNumberService implements ToNumberApi {
       if (current === next) count++;
       else count = 0;
 
-      if (count >= 3) throw new SyntaxError('Invalid Roman Numeral')  // TDD: Step 3
+      if (count >= 3) throw new SyntaxError('Invalid Roman Numeral') 
 
-      if (current === "I" && next === "V") {  // TDD: Step 4
+      if (current === "I" && next === "V") { 
         result += 4;
         i++;
-      } else if (current === "I" && next === "X") { // TDD: Step 6
+      } else if (current === "I" && next === "X") {
         result += 9;
         i++;
-      } else if (nextValue > currentValue) {  // TDD: Step 2
+      } else if (nextValue > currentValue) { 
         result += nextValue - currentValue;
         i++;
       } else { 

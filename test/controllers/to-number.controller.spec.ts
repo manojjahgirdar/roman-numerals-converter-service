@@ -31,14 +31,18 @@ describe('to-number.controller', () => {
 
   describe('Given /to-number', () => {
     const expectedResponse = "1";
-    // const expectedResponse = "II";
 
     beforeEach(() => {
       mockDeRomanizer.mockReturnValueOnce(Promise.resolve(expectedResponse));
     });
 
-    test(`for "I" it should return 1`, done => {
-      request(app).get(`/to-number?value=${"I"}`).expect(200).expect(expectedResponse, done);
+    const input = "I";
+    test(`for ${input} it should return 1`, done => {
+      request(app)
+        .get(`/to-number?value=${input}`)
+        .expect(200)
+        .expect(expectedResponse)
+        .end(done);
     });
   });
 

@@ -101,11 +101,14 @@ describe('To-Roman service', () =>{
 
     context('Test for Invalid number', () => {
       test('for -1 it should throw an error', async () => {
-        expect(async () => await service.romanizer(-1)).rejects.toThrowError("Invalid number");
+        await expect(service.romanizer(-1)).rejects.toThrow('Invalid number');
       });
       test('for 4000 it should throw an error', async () => {
-        expect(async () => await service.romanizer(4000)).rejects.toThrowError("Invalid number");
+        await expect(service.romanizer(4000)).rejects.toThrow('Invalid number');
       });
+      test('for float number 3.14 it should throw an error', async () => {
+        await expect(service.romanizer(3.14)).rejects.toThrow('Invalid number');
+      })
     });
   });
 });

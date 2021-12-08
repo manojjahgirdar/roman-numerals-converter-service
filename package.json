@@ -2,7 +2,7 @@
   "name": "roman-numerals-converter-service",
   "version": "1.1.0",
   "org": "my-org",
-  "description": "Roman Number Converter",
+  "description": "Roman number converter",
   "main": "index.js",
   "config": {
     "protocol": "http",

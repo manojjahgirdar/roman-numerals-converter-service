@@ -108,32 +108,32 @@ describe('To-Number service', () => {
                 let nonRomanNumbers = ["A", "B", "E", "F", "G", "H", "J", "K", "N", "O", "P", "Q", "R", "S", "T", "U", "W", "Y", "Z"];
                 test(`for "${nonRomanNumbers}" it should throw an error`, async () => {
                     nonRomanNumbers.forEach(async (nonRomanNumber) => {
-                        expect(async () => await service.deromanizer(nonRomanNumber)).rejects.toThrowError("Invalid roman number");
+                        await expect(service.deromanizer(nonRomanNumber)).rejects.toThrow('Invalid roman number');
                     });
                 });
             });
 
             context('Roman Numbers like IIII, VIIIII, XXXX', () => {
                 test('for "IIII" it should throw an error', async () => {
-                    await expect(service.deromanizer("IIII")).rejects.toThrow('Invalid Roman Numeral')
+                    await expect(service.deromanizer("IIII")).rejects.toThrow('Invalid Roman Numeral');
                 });
                 test('for "VIIIII" it should throw an error', async () => {
-                    await expect(service.deromanizer("VIIIII")).rejects.toThrow('Invalid Roman Numeral')
+                    await expect(service.deromanizer("VIIIII")).rejects.toThrow('Invalid Roman Numeral');
                 });
                 test('for "XXXX" it should throw an error', async () => {
-                    await expect(service.deromanizer("XXXX")).rejects.toThrow('Invalid Roman Numeral')
+                    await expect(service.deromanizer("XXXX")).rejects.toThrow('Invalid Roman Numeral');
                 });
             });
 
             context('Numbers or special characters like 1, -5, $', () => {
                 test('for "1" it should throw an error', async () => {
-                    expect(async () => await service.deromanizer("1")).rejects.toThrowError("Invalid roman number");
+                    await expect(service.deromanizer("1")).rejects.toThrow('Invalid roman number');
                 });
                 test('for "-5" it should throw an error', async () => {
-                    expect(async () => await service.deromanizer("-5")).rejects.toThrowError("Invalid roman number");
+                    await expect(service.deromanizer("-5")).rejects.toThrow('Invalid roman number');
                 });
                 test('for "$" it should throw an error', async () => {
-                    expect(async () => await service.deromanizer("$")).rejects.toThrowError("Invalid roman number");
+                    await expect(service.deromanizer("$")).rejects.toThrow('Invalid roman number');
                 });
             });
 
@@ -141,7 +141,7 @@ describe('To-Number service', () => {
                 let lowercaseRomanNumbers = ["i", "v", "x", "l", "c", "d", "m"];
                 test(`for "${lowercaseRomanNumbers}" it should throw an error`, async () => {
                     lowercaseRomanNumbers.forEach(async (lowercaseRomanNumber) => {
-                        expect(async () => await service.deromanizer(lowercaseRomanNumber)).rejects.toThrowError("Invalid roman number");
+                        await expect(service.deromanizer(lowercaseRomanNumber)).rejects.toThrow('Invalid roman number');
                     });
                 });
             });
