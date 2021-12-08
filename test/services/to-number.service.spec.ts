@@ -103,17 +103,17 @@ describe('To-Number service', () => {
             });
         });
 
-        context('Test for Invalid Roman Numbers', () => {
-            context('Roman Numbers other than I, V, X, L, C, D, M', () => {
+        context('Test for Invalid Roman Numerals', () => {
+            context('Roman Numerals other than I, V, X, L, C, D, M', () => {
                 let nonRomanNumbers = ["A", "B", "E", "F", "G", "H", "J", "K", "N", "O", "P", "Q", "R", "S", "T", "U", "W", "Y", "Z"];
                 test(`for "${nonRomanNumbers}" it should throw an error`, async () => {
                     nonRomanNumbers.forEach(async (nonRomanNumber) => {
-                        await expect(service.deromanizer(nonRomanNumber)).rejects.toThrow('Invalid roman number');
+                        await expect(service.deromanizer(nonRomanNumber)).rejects.toThrow('Invalid Roman Numeral');
                     });
                 });
             });
 
-            context('Roman Numbers like IIII, VIIIII, XXXX', () => {
+            context('Roman Numerals like IIII, VIIIII, XXXX', () => {
                 test('for "IIII" it should throw an error', async () => {
                     await expect(service.deromanizer("IIII")).rejects.toThrow('Invalid Roman Numeral');
                 });
@@ -127,13 +127,13 @@ describe('To-Number service', () => {
 
             context('Numbers or special characters like 1, -5, $', () => {
                 test('for "1" it should throw an error', async () => {
-                    await expect(service.deromanizer("1")).rejects.toThrow('Invalid roman number');
+                    await expect(service.deromanizer("1")).rejects.toThrow('Invalid Roman Numeral');
                 });
                 test('for "-5" it should throw an error', async () => {
-                    await expect(service.deromanizer("-5")).rejects.toThrow('Invalid roman number');
+                    await expect(service.deromanizer("-5")).rejects.toThrow('Invalid Roman Numeral');
                 });
                 test('for "$" it should throw an error', async () => {
-                    await expect(service.deromanizer("$")).rejects.toThrow('Invalid roman number');
+                    await expect(service.deromanizer("$")).rejects.toThrow('Invalid Roman Numeral');
                 });
             });
 
@@ -141,7 +141,74 @@ describe('To-Number service', () => {
                 let lowercaseRomanNumbers = ["i", "v", "x", "l", "c", "d", "m"];
                 test(`for "${lowercaseRomanNumbers}" it should throw an error`, async () => {
                     lowercaseRomanNumbers.forEach(async (lowercaseRomanNumber) => {
-                        await expect(service.deromanizer(lowercaseRomanNumber)).rejects.toThrow('Invalid roman number');
+                        await expect(service.deromanizer(lowercaseRomanNumber)).rejects.toThrow('Invalid Roman Numeral');
+                    });
+                });
+            });
+
+            context("Test invalid units and tens between thousands and hundreeds", () => {
+                context('I|IV|V|VI|IX is not valid in between M and C', () => {
+                    let units = ["I", "IV", "V", "VI", "IX"];
+
+                    test(`for "MIC", "MIVC", "MVC", "MVIC", "MIXC", "MXC" it should throw an error`, async () => {
+                        units.forEach(async (invalidRomanNumber) => {
+                            let invalid = "M" + invalidRomanNumber + "C";
+                            await expect(service.deromanizer(invalid)).rejects.toThrow('Invalid Roman Numeral');
+                        });
+                    });
+                });
+
+                context('X|XL|L|LX|XC is not valid in between M and C', () => {
+                    let tens = ["X", "XL", "L", "LX", "XC"];
+                    test(`for "MXLC", "MIVXC", "MVXC", ""MVIXC", "MIXXC", "MXXC" it should throw an error`, async () => {
+                        tens.forEach(async (invalidRomanNumber) => {
+                            let invalid = "M" + invalidRomanNumber + "C";
+                            await expect(service.deromanizer(invalid)).rejects.toThrow('Invalid Roman Numeral');
+                        });
+                    });
+                });
+            });
+
+            context("Test invalid thousands and units between hundreds and tens", () => {
+                context('M is not valid in between C and X', () => {
+                    let hundreds = ["M", "MC", "CM"];
+                    test(`for "CMX", "CMCX", "CCMX" it should throw an error`, async () => {
+                        hundreds.forEach(async (invalidRomanNumber) => {
+                            let invalid = "C" + invalidRomanNumber + "X";
+                            await expect(service.deromanizer(invalid)).rejects.toThrow('Invalid Roman Numeral');
+                        });
+                    });
+                });
+
+                context('I|IV|V|VI|IX is not valid in between C and X', () => {
+                    let units = ["IV", "V", "VI", "IX"];
+                    test(`for "CIVX", "CVX", "CVIX", "XIXX" it should throw an error`, async () => {
+                        units.forEach(async (invalidRomanNumber) => {
+                            let invalid = "C" + invalidRomanNumber + "X";
+                            await expect(service.deromanizer(invalid)).rejects.toThrow('Invalid Roman Numeral');
+                        });
+                    });
+                });
+            });
+
+            context("Test invalid thousands and hundreeds between tens and units", () => {
+                context('M is not valid in between L and I', () => {
+                    let hundreds = ["M", "MC", "CM"];
+                    test(`for "LMI", "LMCI", "LCMI" it should throw an error`, async () => {
+                        hundreds.forEach(async (invalidRomanNumber) => {
+                            let invalid = "L" + invalidRomanNumber + "I";
+                            await expect(service.deromanizer(invalid)).rejects.toThrow('Invalid Roman Numeral');
+                        });
+                    });
+                });
+
+                context('CM|CD|D|C is not valid in between L and I', () => {
+                    let hundreds = ["CM", "CD", "D", "C"];
+                    test(`for "LCMI", "LCDI", "LDI", "LCI" it should throw an error`, async () => {
+                        hundreds.forEach(async (invalidRomanNumber) => {
+                            let invalid = "L"+invalidRomanNumber + "I";
+                            await expect(service.deromanizer(invalid)).rejects.toThrow('Invalid Roman Numeral');
+                        });
                     });
                 });
             });
