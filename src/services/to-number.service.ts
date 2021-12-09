@@ -1,6 +1,7 @@
 import {ToNumberApi} from './to-number.api';
 import {Inject} from 'typescript-ioc';
 import {LoggerApi} from '../logger';
+import { Errors } from 'typescript-rest';
 
 export class ToNumberService implements ToNumberApi {
   logger: LoggerApi;
@@ -25,13 +26,13 @@ export class ToNumberService implements ToNumberApi {
   private validateRoman(value: string) {
     for (let i = 0; i < value.length; i++) {
       if (!(value[i] in this.getRomanNumeralMap()))
-        throw new SyntaxError('Invalid Roman Numeral');
+        throw new Errors.BadRequestError('Invalid Roman Numeral');
       if (!isNaN(Number(value[i])))
-        throw new SyntaxError('Invalid Roman Numeral');
+        throw new Errors.BadRequestError('Invalid Roman Numeral');
     }
     const RE = /^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$/;
     if (!(RE.test(value)))
-      throw new SyntaxError('Invalid Roman Numeral');
+      throw new Errors.BadRequestError('Invalid Roman Numeral');
   }
 
   private convertToNumber(value: string): number {

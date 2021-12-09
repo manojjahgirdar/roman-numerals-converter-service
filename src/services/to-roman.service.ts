@@ -1,8 +1,7 @@
 import {ToRomanApi} from './to-roman.api';
 import {Inject} from 'typescript-ioc';
 import {LoggerApi} from '../logger';
-import { log } from 'console';
-import { integer } from '@pact-foundation/pact/src/dsl/matchers';
+import { Errors } from 'typescript-rest';
 
 export class ToRomanService implements ToRomanApi {
   logger: LoggerApi;
@@ -24,8 +23,8 @@ export class ToRomanService implements ToRomanApi {
   }
 
   private validateNumber(value: number): void {
-    if (value < 0 || value > 3999) throw new Error("Invalid number");
-    if (value % 1 !== 0) throw new Error("Invalid number");
+    if (value < 0 || value > 3999) throw new Errors.BadRequestError("Invalid number");
+    if (value % 1 !== 0) throw new Errors.BadRequestError("Invalid number");
   }
   
   private convertToRoman(value: number): string {
