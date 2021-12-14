@@ -13,6 +13,16 @@ export class ToNumberService implements ToNumberApi {
     this.logger = logger.child('ToRomanService');
   }
 
+  private RomanNumeralMap = {
+    I: 1,
+    V: 5,
+    X: 10,
+    L: 50,
+    C: 100,
+    D: 500,
+    M: 1000
+  };
+
   async deromanizer(value: string = "I"): Promise<number> {
     this.logger.info(`Invoked deromanizer with roman-no: ${value}`);
     
@@ -36,8 +46,8 @@ export class ToNumberService implements ToNumberApi {
     for (let i = 0; i < value.length; i++) {
       const current = value[i];
       const next = value[i + 1];
-      const currentValue = this.getRomanNumeralMap()[current];
-      const nextValue = this.getRomanNumeralMap()[next];
+      const currentValue = this.RomanNumeralMap[current];
+      const nextValue = this.RomanNumeralMap[next];
 
       if (current === "I" && next === "V") {
         result += 4;
@@ -53,18 +63,6 @@ export class ToNumberService implements ToNumberApi {
       }
     }
     return result;
-  }
-
-  private getRomanNumeralMap(): object {
-    return {
-      I: 1,
-      V: 5,
-      X: 10,
-      L: 50,
-      C: 100,
-      D: 500,
-      M: 1000
-    };
   }
 }
 
