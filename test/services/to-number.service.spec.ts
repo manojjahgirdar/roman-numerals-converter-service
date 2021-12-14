@@ -23,6 +23,9 @@ describe('To-Number service', () => {
             test('for nulla it should return 0', async () => {
                 expect(await service.deromanizer("nulla")).toEqual(0);
             });
+            test('for NULLA it should return 0', async () => {
+                expect(await service.deromanizer("NULLA")).toEqual(0);
+            });
         });
 
         context("Test for lowercase characters", () => {
