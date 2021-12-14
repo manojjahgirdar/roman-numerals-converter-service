@@ -1,7 +1,7 @@
 import {ToNumberApi} from './to-number.api';
 import {Inject} from 'typescript-ioc';
 import {LoggerApi} from '../logger';
-import { Errors } from 'typescript-rest';
+import { BadRequestError } from 'typescript-rest/dist/server/model/errors';
 
 export class ToNumberService implements ToNumberApi {
   logger: LoggerApi;
@@ -16,7 +16,7 @@ export class ToNumberService implements ToNumberApi {
   async deromanizer(value: string = "I"): Promise<number> {
     this.logger.info(`Invoked deromanizer with roman-no: ${value}`);
     
-    if (value === 'nulla') return 0;
+    if (value.toLowerCase() === 'nulla') return 0;
     
     this.validateRoman(value);
     
@@ -24,19 +24,15 @@ export class ToNumberService implements ToNumberApi {
   }
 
   private validateRoman(value: string) {
-    for (let i = 0; i < value.length; i++) {
-      if (!(value[i] in this.getRomanNumeralMap()))
-        throw new Errors.BadRequestError('Invalid Roman Numeral');
-      if (!isNaN(Number(value[i])))
-        throw new Errors.BadRequestError('Invalid Roman Numeral');
-    }
     const RE = /^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$/;
-    if (!(RE.test(value)))
-      throw new Errors.BadRequestError('Invalid Roman Numeral');
+    if (!(RE.test(value.toUpperCase())))
+      throw new BadRequestError('Invalid Roman Numeral');
   }
 
   private convertToNumber(value: string): number {
     let result: number = 0;
+    value = value.toUpperCase();
+    
     for (let i = 0; i < value.length; i++) {
       const current = value[i];
       const next = value[i + 1];

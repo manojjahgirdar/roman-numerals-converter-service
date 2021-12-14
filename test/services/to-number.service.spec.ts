@@ -25,6 +25,12 @@ describe('To-Number service', () => {
             });
         });
 
+        context("Test for lowercase characters", () => {
+            test('for "iv" it should return 4', async () => {
+                expect(await service.deromanizer("iv")).toEqual(4);
+            });
+        });
+
         context("Test for the Pattern I, II, III", () => {
             test('for "I" it should return 1', async () => {
                 expect(await service.deromanizer("I")).toEqual(1);
@@ -137,15 +143,6 @@ describe('To-Number service', () => {
                 });
             });
 
-            context('Lowercase characters like i, v, x, l, c, d, m', () => {
-                let lowercaseRomanNumbers = ["i", "v", "x", "l", "c", "d", "m"];
-                test(`for "${lowercaseRomanNumbers}" it should throw an error`, async () => {
-                    lowercaseRomanNumbers.forEach(async (lowercaseRomanNumber) => {
-                        await expect(service.deromanizer(lowercaseRomanNumber)).rejects.toThrow('Invalid Roman Numeral');
-                    });
-                });
-            });
-
             context("Test invalid units and tens between thousands and hundreeds", () => {
                 context('I|IV|V|VI|IX is not valid in between M and C', () => {
                     let units = ["I", "IV", "V", "VI", "IX"];
@@ -159,7 +156,7 @@ describe('To-Number service', () => {
                 });
 
                 context('X|XL|L|LX|XC is not valid in between M and C', () => {
-                    let tens = ["X", "XL", "L", "LX", "XC"];
+                    let tens = ["XL", "L", "LX", "XC"];
                     test(`for "MXLC", "MIVXC", "MVXC", ""MVIXC", "MIXXC", "MXXC" it should throw an error`, async () => {
                         tens.forEach(async (invalidRomanNumber) => {
                             let invalid = "M" + invalidRomanNumber + "C";
@@ -171,8 +168,8 @@ describe('To-Number service', () => {
 
             context("Test invalid thousands and units between hundreds and tens", () => {
                 context('M is not valid in between C and X', () => {
-                    let hundreds = ["M", "MC", "CM"];
-                    test(`for "CMX", "CMCX", "CCMX" it should throw an error`, async () => {
+                    let hundreds = ["MC", "CM"];
+                    test(`for "CMCX", "CCMX" it should throw an error`, async () => {
                         hundreds.forEach(async (invalidRomanNumber) => {
                             let invalid = "C" + invalidRomanNumber + "X";
                             await expect(service.deromanizer(invalid)).rejects.toThrow('Invalid Roman Numeral');
