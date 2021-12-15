@@ -1,5 +1,4 @@
 dependencies:
   - name: roman-numerals-converter-service
-    version: 0.0.18
-    repository: >-
-      http://artifactory-artifactory.tools:8082/artifactory/generic-local/dev-manoj
+    version: 0.0.19
+    repository: http://artifactory-artifactory.tools:8082/artifactory/generic-local/dev-manoj
