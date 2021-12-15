@@ -1,0 +1,3 @@
+global: {}
+roman-numerals-calculator-service:
+  replicaCount: 1
