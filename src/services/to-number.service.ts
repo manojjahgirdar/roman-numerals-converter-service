@@ -26,26 +26,27 @@ export class ToNumberService implements ToNumberApi {
   async deromanizer(value: string = "I"): Promise<number> {
     this.logger.info(`Invoked deromanizer with roman-no: ${value}`);
     
-    if (value.toLowerCase() === 'nulla') return 0;
+    let uppercaseValue = value.toUpperCase();
+
+    if (uppercaseValue === 'NULLA') return 0;
     
-    this.validateRoman(value);
+    this.validateRoman(uppercaseValue);
     
-    return this.convertToNumber(value);
+    return this.convertToNumber(uppercaseValue);
   }
 
-  private validateRoman(value: string) {
+  private validateRoman(uppercaseValue: string) {
     const RE = /^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$/;
-    if (!(RE.test(value.toUpperCase())))
+    if (!(RE.test(uppercaseValue)))
       throw new BadRequestError('Invalid Roman Numeral');
   }
 
-  private convertToNumber(value: string): number {
+  private convertToNumber(uppercaseValue: string): number {
     let result: number = 0;
-    value = value.toUpperCase();
     
-    for (let i = 0; i < value.length; i++) {
-      const current = value[i];
-      const next = value[i + 1];
+    for (let i = 0; i < uppercaseValue.length; i++) {
+      const current = uppercaseValue[i];
+      const next = uppercaseValue[i + 1];
       const currentValue = this.RomanNumeralMap[current];
       const nextValue = this.RomanNumeralMap[next];
 
