@@ -26,7 +26,7 @@ export class ToNumberService implements ToNumberApi {
   async deromanizer(value: string = "I"): Promise<number> {
     this.logger.info(`Invoked deromanizer with roman-no: ${value}`);
     
-    let uppercaseValue = value.toUpperCase();
+    const uppercaseValue = value.toUpperCase();
 
     if (uppercaseValue === 'NULLA') return 0;
     
