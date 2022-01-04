@@ -1,0 +1,4 @@
+apiVersion: v2
+version: 0.1.0
+name: roman-numerals-converter-service
+description: Chart to configure ArgoCD with the roman-numerals-converter-service project and its applications

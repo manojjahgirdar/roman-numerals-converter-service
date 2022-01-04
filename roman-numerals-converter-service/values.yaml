@@ -1,0 +1,3 @@
+global: {}
+roman-numerals-converter-service:
+  replicaCount: 1

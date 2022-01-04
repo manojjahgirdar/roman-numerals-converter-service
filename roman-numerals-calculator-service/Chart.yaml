@@ -1,0 +1,4 @@
+apiVersion: v2
+version: 0.1.0
+name: roman-numerals-calculator-service
+description: Chart to configure ArgoCD with the roman-numerals-calculator-service project and its applications
