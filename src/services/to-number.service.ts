@@ -66,5 +66,3 @@ export class ToNumberService implements ToNumberApi {
     return result;
   }
 }
-
-
